@@ -16,7 +16,7 @@ overlay.style.cssText = `
 
 const svgImage = document.createElement('img');
 svgImage.id = 'svgImage';
-svgImage.src = 'still_logo.svg';
+svgImage.src = 'https://firebasestorage.googleapis.com/v0/b/still-384819.appspot.com/o/still_logo.svg?alt=media&token=d9d387dd-b32b-4315-8b85-0647c779dd91';
 svgImage.style.cssText = `
     max-width: 100%;
     max-height: 100%;
