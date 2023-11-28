@@ -10,7 +10,7 @@ overlay.style.cssText = `
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(255, 255, 255, 0.7);
+    background-color: rgba(247, 247, 247, 1);
     z-index: 999;
 `;
 
@@ -20,7 +20,7 @@ svgImage.src = 'https://firebasestorage.googleapis.com/v0/b/still-384819.appspot
 svgImage.style.cssText = `
     width: 100vw;
     height: 100vh;
-    object-fit: contain;
+    object-fit: cover;
     display: none;
     position: fixed; // changed from absolute to fixed
     top: 0;
