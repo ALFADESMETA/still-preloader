@@ -16,7 +16,7 @@ overlay.style.cssText = `
 
 const svgImage = document.createElement('img');
 svgImage.id = 'svgImage';
-svgImage.src = 'https://ALFADESMETA.github.io/preloaderJS/still_logo.svg.';
+svgImage.src = 'still_logo.svg';
 svgImage.style.cssText = `
     max-width: 100%;
     max-height: 100%;
