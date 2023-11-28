@@ -18,13 +18,13 @@ const svgImage = document.createElement('img');
 svgImage.id = 'svgImage';
 svgImage.src = 'https://firebasestorage.googleapis.com/v0/b/still-384819.appspot.com/o/0.1.svg?alt=media&token=e8148bb0-467a-472d-aaa0-30ae476f0312';
 svgImage.style.cssText = `
-    max-width: 100%;
-    max-height: 100%;
+    width: 100vw;
+    height: 100vh;
+    object-fit: contain;
     display: none;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    position: fixed; // changed from absolute to fixed
+    top: 0;
+    left: 0;
 `;
 svgImage.style.display = 'none';
 
