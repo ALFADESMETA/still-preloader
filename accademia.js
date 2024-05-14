@@ -30,7 +30,7 @@ overlay.appendChild(lottieContainer);
 document.body.appendChild(overlay);
 
 // Load the Lottie animation
-lottie.loadAnimation({
+const animation = lottie.loadAnimation({
     container: lottieContainer,
     renderer: 'svg',
     loop: true,
@@ -41,15 +41,22 @@ lottie.loadAnimation({
     }
 });
 
+animation.addEventListener('DOMLoaded', () => {
+    console.log('Lottie animation loaded successfully.');
+});
+
 // Function to hide the overlay
 function hideOverlay() {
-    overlay.style.display = 'none';
+    if (overlay.style.display !== 'none') {
+        overlay.style.display = 'none';
+        console.log('Overlay hidden');
+    }
 }
 
 // Add an event listener to hide the overlay when all external JS files are loaded
 document.addEventListener('DOMContentLoaded', () => {
     console.log('DOMContentLoaded event fired');
-    setTimeout(hideOverlay, 100); // You can replace this with your actual loading code.
+    setTimeout(hideOverlay, 3000); // Adjust the time as needed for testing
 });
 
 // Fallback: If all external resources are loaded and the DOMContentLoaded event doesn't fire,
