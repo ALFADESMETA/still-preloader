@@ -35,7 +35,7 @@ const animation = lottie.loadAnimation({
     renderer: 'svg',
     loop: true,
     autoplay: true,
-    path: 'https://raw.githubusercontent.com/ALFADESMETA/still-preloader/main/Animation%20-%201715722968325.json' // Path to your Lottie animation JSON file
+    path: 'https://alfadesmeta.github.io/still-preloader/Animation%20-%201715722968325.json' // Path to your Lottie animation JSON file
 });
 
 // Function to hide the overlay
