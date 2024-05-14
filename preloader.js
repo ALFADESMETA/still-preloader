@@ -1,4 +1,4 @@
-// Create the overlay and SVG elements
+// Create the overlay element
 const overlay = document.createElement('div');
 overlay.id = 'loader';
 overlay.style.cssText = `
@@ -10,36 +10,53 @@ overlay.style.cssText = `
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(247, 247, 247, 1);
+    background-color: black;
     z-index: 999;
 `;
 
-const svgImage = document.createElement('img');
-svgImage.id = 'svgImage';
-svgImage.src = 'https://firebasestorage.googleapis.com/v0/b/still-384819.appspot.com/o/0.1.svg?alt=media&token=e8148bb0-467a-472d-aaa0-30ae476f0312';
-svgImage.style.cssText = `
-    width: 100vw;
-    height: 100vh;
-    object-fit: cover;
-    display: none;
-    position: fixed; // changed from absolute to fixed
-    top: 0;
-    left: 0;
+// Create the Lottie animation container
+const lottieContainer = document.createElement('div');
+lottieContainer.id = 'lottieContainer';
+lottieContainer.style.cssText = `
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 `;
-svgImage.style.display = 'none';
 
 // Append the elements to the body
+overlay.appendChild(lottieContainer);
 document.body.appendChild(overlay);
-document.body.appendChild(svgImage);
 
-// Function to hide the overlay and display the SVG
+// Log for debugging
+console.log('Overlay and Lottie container added to the DOM.');
+
+// Load the Lottie animation
+const animation = lottie.loadAnimation({
+    container: lottieContainer,
+    renderer: 'svg',
+    loop: true,
+    autoplay: true,
+    path: 'https://raw.githubusercontent.com/ALFADESMETA/still-preloader/main/Animation%20-%201715722968325.json', // Path to your Lottie animation JSON file
+    rendererSettings: {
+        preserveAspectRatio: 'xMidYMid slice'
+    }
+});
+
+animation.addEventListener('DOMLoaded', () => {
+    console.log('Lottie animation loaded successfully.');
+});
+
+// Function to hide the overlay
 function hideOverlay() {
+    console.log('Hiding overlay');
     overlay.style.display = 'none';
-    svgImage.style.display = 'block';
 }
 
 // Add an event listener to hide the overlay when all external JS files are loaded
 document.addEventListener('DOMContentLoaded', () => {
+    console.log('DOMContentLoaded event fired');
     // Replace the following lines with the actual code that loads your external JS files
     // For demonstration purposes, we'll use a setTimeout to simulate loading external JS files.
     setTimeout(hideOverlay, 100); // Replace with your actual loading code.
