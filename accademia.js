@@ -43,7 +43,10 @@ lottie.loadAnimation({
 
 // Function to hide the overlay
 function hideOverlay() {
-    overlay.style.display = 'none';
+    if (overlay.style.display !== 'none') {
+        overlay.style.display = 'none';
+        console.log('Overlay hidden');
+    }
 }
 
 // Add an event listener to hide the overlay when all external JS files are loaded
