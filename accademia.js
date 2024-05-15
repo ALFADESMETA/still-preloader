@@ -43,4 +43,4 @@ const animation = lottie.loadAnimation({
 
 // Fallback: If all external resources are loaded and the DOMContentLoaded event doesn't fire,
 // we'll still hide the overlay when the window's load event is triggered.
-window.addEventListener('load', hideOverlay);
+window.addEventListener('load');
