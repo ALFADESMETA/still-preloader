@@ -38,7 +38,7 @@ const animation = lottie.loadAnimation({
     renderer: 'svg',
     loop: true,
     autoplay: true,
-    path: 'https://alfadesmeta.github.io/still-preloader/animation.json', // Path to your Lottie animation JSON file
+    path: 'https://alfadesmeta.github.io/still-preloader/Animation-AI.json', // Path to your Lottie animation JSON file
     rendererSettings: {
         preserveAspectRatio: 'xMidYMid slice'
     }
