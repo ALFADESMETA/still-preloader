@@ -1,4 +1,4 @@
-// Create the overlay element
+// Create the overlay element.
 const overlay = document.createElement('div');
 overlay.id = 'loader';
 overlay.style.cssText = `
