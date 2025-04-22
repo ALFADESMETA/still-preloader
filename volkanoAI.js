@@ -14,12 +14,12 @@ overlay.style.cssText = `
     z-index: 999;
 `;
 
-// Create the Lottie animation container
+// Create the Lottie animation container with LARGER size
 const lottieContainer = document.createElement('div');
 lottieContainer.id = 'lottieContainer';
 lottieContainer.style.cssText = `
-    width: 150px;
-    height: 150px;
+    width: 300px;  /* Increased from 150px */
+    height: 300px; /* Increased from 150px */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -62,7 +62,7 @@ window.hideOverlay = hideOverlay;
 // Add an event listener to hide the overlay after a delay
 document.addEventListener('DOMContentLoaded', () => {
     console.log('DOMContentLoaded event fired');
-    setTimeout(hideOverlay, 8000); // 8 seconds should be enough for most Flutter apps
+    setTimeout(hideOverlay, 10000); // Increased to 10 seconds for more visibility
 });
 
 // Fallback: If DOMContentLoaded doesn't fire, hide on window load
