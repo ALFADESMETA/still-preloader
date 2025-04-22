@@ -1,4 +1,4 @@
-// Create the overlay element.
+// Create the overlay element
 const overlay = document.createElement('div');
 overlay.id = 'loader';
 overlay.style.cssText = `
@@ -28,72 +28,44 @@ lottieContainer.style.cssText = `
 // Append the elements to the body
 overlay.appendChild(lottieContainer);
 document.body.appendChild(overlay);
+
+// Log for debugging
 console.log('Overlay and Lottie container added to the DOM.');
 
-// Initialize animation function with safety check
-function initAnimation() {
-    if (typeof lottie !== 'undefined') {
-        try {
-            const animation = lottie.loadAnimation({
-                container: lottieContainer,
-                renderer: 'svg',
-                loop: true,
-                autoplay: true,
-                path: 'https://alfadesmeta.github.io/still-preloader/Animation-AI.json',
-                rendererSettings: {
-                    preserveAspectRatio: 'xMidYMid slice'
-                }
-            });
-            
-            animation.addEventListener('DOMLoaded', () => {
-                console.log('Lottie animation loaded successfully.');
-            });
-            
-            animation.addEventListener('error', (error) => {
-                console.error('Lottie animation error:', error);
-            });
-        } catch (error) {
-            console.error('Error initializing Lottie animation:', error);
-        }
-    } else {
-        console.error('Lottie library not found. Make sure it is loaded before this script.');
+// Load the Lottie animation
+const animation = lottie.loadAnimation({
+    container: lottieContainer,
+    renderer: 'svg',
+    loop: true,
+    autoplay: true,
+    path: 'https://alfadesmeta.github.io/still-preloader/Animation-AI.json',
+    rendererSettings: {
+        preserveAspectRatio: 'xMidYMid slice'
     }
-}
+});
+
+animation.addEventListener('DOMLoaded', () => {
+    console.log('Lottie animation loaded successfully.');
+});
 
 // Function to hide the overlay
 function hideOverlay() {
-    if (overlay && overlay.style && overlay.style.display !== 'none') {
+    if (overlay.style.display !== 'none') {
         overlay.style.display = 'none';
         console.log('Overlay hidden');
     }
 }
 
-// Make hideOverlay available globally so it can be called from HTML
+// Make hideOverlay available globally
 window.hideOverlay = hideOverlay;
 
-// Initialize animation when document is ready
+// Add an event listener to hide the overlay after a delay
 document.addEventListener('DOMContentLoaded', () => {
     console.log('DOMContentLoaded event fired');
-    initAnimation();
-    
-    // Don't hide overlay here, wait for Flutter
+    setTimeout(hideOverlay, 8000); // 8 seconds should be enough for most Flutter apps
 });
 
-// Hide overlay when Flutter renders its first frame
-window.addEventListener('flutter-first-frame', () => {
-    console.log('Flutter first frame rendered');
-    hideOverlay();
-});
-
-// Fallback: If Flutter event doesn't fire, hide after a timeout
+// Fallback: If DOMContentLoaded doesn't fire, hide on window load
 window.addEventListener('load', () => {
-    console.log('Window load event fired');
-    // Use a longer timeout to give Flutter more time to initialize
-    setTimeout(() => {
-        console.log('Fallback timeout triggered');
-        hideOverlay();
-    }, 15000); // 15 seconds fallback
+    setTimeout(hideOverlay, 2000); // Additional 2 second buffer after load
 });
-
-// Initialize animation immediately in case script runs after DOM is already loaded
-initAnimation();
